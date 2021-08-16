@@ -13,7 +13,7 @@ export default class Navbar extends Component {
                             <Link to="/" className="nav-link">Geckos</Link>
                          </li>
                          <li className="navbar-item">
-                             <Link to="/create" className="nav-link">Add New Gecko</Link>
+                             <Link to="/create" className="nav-link">Add Gecko</Link>
                          </li>
                          <li className="navbar-item">
                              <Link to="/species" className="nav-link">Add Species</Link>
@@ -21,6 +21,6 @@ export default class Navbar extends Component {
                     </ul>
                 </div>
             </nav>
-        )
+        );  
     }
 }

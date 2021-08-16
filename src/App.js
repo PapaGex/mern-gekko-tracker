@@ -11,12 +11,14 @@ import CreateSpecies from "./components/create-species.component";
 function App() {
   return (
     <Router>
-      <Navbar />
-      <br/>
-      <Route path="/" exact component={GeckoList} />
-      <Route path="/edit/:id" component={EditGecko} />
-      <Route path="/create" component={CreateGecko} />
-      <Route path="/user" component={CreateSpecies} /> 
+      <div className="container">
+        <Navbar />
+        <br/>
+        <Route path="/" exact component={GeckoList} />
+        <Route path="/edit/:id" component={EditGecko} />
+        <Route path="/create" component={CreateGecko} />
+        <Route path="/user" component={CreateSpecies} /> 
+      </div>
     </Router>
   );
 }
