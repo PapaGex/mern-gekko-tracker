@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Navbar from "./components/navbar.component";
 import GeckoList from "./components/gecko-list.component";
+import SpeciesList from "./components/species-list.component";
 import EditGecko from "./components/edit-gecko.component";
 import CreateGecko from "./components/create-gecko.component";
 import CreateSpecies from "./components/create-species.component";
@@ -14,6 +15,7 @@ function App() {
       <div className="container">
         <Navbar />
         <br/>
+        <Route path="/gallery" component={SpeciesList} />
         <Route path="/" exact component={GeckoList} />
         <Route path="/edit/:id" component={EditGecko} />
         <Route path="/create" component={CreateGecko} />

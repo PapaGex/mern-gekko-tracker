@@ -6,38 +6,38 @@ export default class CreateGecko extends Component {
     constructor(props) {
         super(props);
 
-        this.onChangeGeckoName = this.onChangeGeckoName.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
+        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeLatinName = this.onChangeLatinName.bind(this);
+        this.onChangeOrigin = this.onChangeOrigin.bind(this);
         this.onChangeHatchDate = this.onChangeHatchDate.bind(this);
         this.onChangeGender = this.onChangeGender.bind(this);
-        this.onChangePurchasePrice = this.onChangePurchasePrice.bind(this);
+        this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            geckoName: "",
-            description: "",
+            name: "",
+            latinName: [""],
+            origin: "",
             hatchDate: new Date(),
             gender : "",
-            purchasePrice: 0,
-            species: []
+            description: "",
         }
     }
 
     componentDidMount() {
         this.setState({
-            species: ['Rhachodactylus leachianus'],
-            speciesName: 'Rhachodactylus leachianus'
-        })
-    }
-
-    onChangeGeckoName(e) {
-        this.setState({
-            geckoName: e.target.value
+            latinName: ['Rhachodactylus leachianus'],
         });
     }
-    onChangeDescription(e) {
+
+    onChangeName(e) {
         this.setState({
-            description: e.target.value
+            name: e.target.value
+        });
+    }
+    onChangeOrigin(e) {
+        this.setState({
+            origin: e.target.value
         });
     }
     onChangeHatchDate(date) {
@@ -50,21 +50,21 @@ export default class CreateGecko extends Component {
             gender: e.target.value
         });
     }
-    onChangePurchasePrice(e) {
+    onChangeDescription(e) {
         this.setState({
-            purchasePrice: e.target.value
-        })
+            description: e.target.value
+        });
     }
     
     onSubmit(e) {
         e.preventDefault();
 
         const gecko = {
-            geckoName: this.state.geckoName,
-            description: this.state.description,
+            name: this.state.name,
+            latinName: this.state.latinName,
+            origin: this.state.origin,
             hatchDate: this.state.hatchDate,
-            gender: this.state.gender,
-            purchasePrice: this.state.purchasePrice            
+            gender: this.state.gender
         }
 
         console.log(gecko);
@@ -81,10 +81,10 @@ export default class CreateGecko extends Component {
                     <select ref="userInput"
                         required
                         className="from-control"
-                        value={this.state.geckoName}
-                        onChange={this.onChangeGeckoName}>
+                        value={this.state.name}
+                        onChange={this.onChangeName}>
                             {
-                                this.state.species.map(function(user) {
+                                this.state.latinName.map(function(user) {
                                     return <option
                                         key={user}
                                         value={user}>{user}
@@ -94,13 +94,13 @@ export default class CreateGecko extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label>Description and Notes</label>
+                        <label>Description of aquisition</label>
                         <input
                             type="text"
                             required
                             className="form-control"
-                            value={this.state.description}
-                            onChange={this.onChangeDescription}
+                            value={this.state.origin}
+                            onChange={this.onChangeOrigin}
                             />
                     </div>
                     <div className="form-group">
@@ -119,15 +119,6 @@ export default class CreateGecko extends Component {
                             className="form-control"
                             value={this.state.gender}
                             onChange={this.onChangeGender}
-                            />
-                    </div>
-                    <div className="form-group">
-                        <label>Price at Purchase</label>
-                        <input
-                            type='text'
-                            className="form-control"
-                            value={this.state.purchasePrice}
-                            onChange={this.onChangePurchasePrice}
                             />
                     </div>
             </form>

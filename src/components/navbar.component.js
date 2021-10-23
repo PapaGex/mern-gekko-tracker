@@ -12,6 +12,9 @@ export default class Navbar extends Component {
                         <li className="navbar-item">
                             <Link to="/" className="nav-link">Geckos</Link>
                          </li>
+                        <li className="navbar-item">
+                            <Link to="/Breeds" className="nav-link">Species</Link>
+                        </li>
                          <li className="navbar-item">
                              <Link to="/create" className="nav-link">Add Gecko</Link>
                          </li>
