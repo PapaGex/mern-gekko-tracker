@@ -24,6 +24,7 @@ export default class CreateSpecies extends Component {
             specialReqs: "",
         }
     }
+
     onChangeLatinName(e) {
         this.setState({
             latinName: e.target.value
@@ -70,12 +71,12 @@ export default class CreateSpecies extends Component {
             tempHigh: this.state.tempLow,
             tempLow: this.state.tempLow,
             humidity: this.state.humidity,
-            specialReqs: this.state.specialReqs,
+            specialReqs: this.state.specialReqs
         }
 
         console.log(species);
 
-        window.location = '/';
+        window.location = '/species';
     }
     render() {
         return (
@@ -83,56 +84,55 @@ export default class CreateSpecies extends Component {
                 <h3>Add New Species to the Collection</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
+                        <label>Latin Name: </label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            value={this.state.latinName}
+                            onChange={this.onChangeLatinName}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Common Name: </label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            value={this.state.commonName}
+                            onChange={this.onChangeCommonName}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Natural Habitat and Range: </label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            value={this.state.naturalHabitat}
+                            onChange={this.onChangeNaturalHabitat}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>High Temperature: </label>
+                        <input
+                            type='text'
+                            className="form-control"
+                            value={this.state.tempHigh}
+                            onChange={this.onChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Low Temperature: </label>
+                        <input
+                            type='text'
+                            className="form-control"
+                            value={this.state.tempLow}
+                            onChange={this.onChangeTempLow}
+                        />
+                    </div>
                         <div className="form-group">
-                            <label>Latin Name</label>
-                            <input
-                                type="text"
-                                required
-                                className="form-control"
-                                value={this.state.latinName}
-                                onChange={this.onChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Common Name</label>
-                            <input
-                                type="text"
-                                required
-                                className="form-control"
-                                value={this.state.commonName}
-                                onChange={this.onChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Natural Habitat and Range</label>
-                            <input
-                                type="text"
-                                required
-                                className="form-control"
-                                value={this.state.naturalHabitat}
-                                onChange={this.onChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>High Temperature</label>
-                            <input
-                                type='text'
-                                className="form-control"
-                                value={this.state.tempHigh}
-                                onChange={this.onChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Low Temperature</label>
-                            <input
-                                type='text'
-                                className="form-control"
-                                value={this.state.tempLow}
-                                onChange={this.onChangeTempLow}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Humidity</label>
+                            <label>Humidity: </label>
                             <input
                                 type='text'
                                 className="form-control"
@@ -141,7 +141,7 @@ export default class CreateSpecies extends Component {
                             />
                         </div>
                     <div className="form-group">
-                        <label>Description and Notes</label>
+                        <label>Description and Notes: </label>
                         <input
                             type="text"
                             required
@@ -150,7 +150,6 @@ export default class CreateSpecies extends Component {
                             onChange={this.onChangeSpecialReqs}
                         />
                         </div>
-                    </div>
                 </form>
             </div>
         )

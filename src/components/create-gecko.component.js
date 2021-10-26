@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -19,7 +19,7 @@ export default class CreateGecko extends Component {
             latinName: [""],
             origin: "",
             hatchDate: new Date(),
-            gender : "",
+            gender: "",
             description: "",
         }
     }
@@ -35,27 +35,38 @@ export default class CreateGecko extends Component {
             name: e.target.value
         });
     }
+
+    onChangeLatinName(e) {
+        this.setState({
+            latinName: e.target.value
+        });
+    }
+
     onChangeOrigin(e) {
         this.setState({
             origin: e.target.value
         });
     }
+
     onChangeHatchDate(date) {
         this.setState({
             hatchDate: date
-        }); 
+        });
     }
+
     onChangeGender(e) {
         this.setState({
             gender: e.target.value
         });
+
     }
+
     onChangeDescription(e) {
         this.setState({
             description: e.target.value
         });
     }
-    
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -64,44 +75,49 @@ export default class CreateGecko extends Component {
             latinName: this.state.latinName,
             origin: this.state.origin,
             hatchDate: this.state.hatchDate,
-            gender: this.state.gender
+            gender: this.state.gender,
+            description: this.state.description
         }
 
         console.log(gecko);
 
         window.location = '/';
     }
+
     render() {
-    return (
-        <div>
-            <h3>Add New Gecko to Collection</h3>
-            <form onSubmit={this.onSubmit}>
-                <div className="form-group">
-                    <label>Gecko Name: </label>
-                    <select ref="userInput"
-                        required
-                        className="from-control"
-                        value={this.state.name}
-                        onChange={this.onChangeName}>
-                            {
-                                this.state.latinName.map(function(user) {
-                                    return <option
-                                        key={user}
-                                        value={user}>{user}
-                                        </option>;
-                                })
-                            }
-                        </select>
+        return (
+            <div>
+                <h3>Add New Gecko to the Collection</h3>
+                <form onSubmit={this.onSubmit}>
+                    <div className="form-group">
+                        <label>Gecko Name: </label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            value={this.state.name}
+                            onChange={this.onChangeName}
+                        />
                     </div>
                     <div className="form-group">
-                        <label>Description of aquisition</label>
+                        <label>Species Name: </label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            value={this.state.latinName}
+                            onChange={this.onChangeLatinName}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Description of acquisition</label>
                         <input
                             type="text"
                             required
                             className="form-control"
                             value={this.state.origin}
                             onChange={this.onChangeOrigin}
-                            />
+                        />
                     </div>
                     <div className="form-group">
                         <label>Approximnate Hatch Date</label>
@@ -109,7 +125,7 @@ export default class CreateGecko extends Component {
                             <DatePicker
                                 selected={this.state.hatchDate}
                                 onChange={this.onChangeHatchDate}
-                                />
+                            />
                         </div>
                     </div>
                     <div>
@@ -119,11 +135,20 @@ export default class CreateGecko extends Component {
                             className="form-control"
                             value={this.state.gender}
                             onChange={this.onChangeGender}
-                            />
+                        />
                     </div>
-            </form>
-        </div>
-    )
-        
+                    <div className="form-group">
+                        <label>Description</label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            value={this.state.origin}
+                            onChange={this.onChangeOrigin}
+                        />
+                    </div>
+                </form>
+            </div>
+        )
     }
 }
